@@ -17,19 +17,28 @@ function age() {
 
     if (curdate.getMonth() < birth.getMonth()) {
         yourage--;
-        mon = (mon + 12)%12;
-
+        mon = (mon + 12);
     }
     else if (curdate.getMonth() == birth.getMonth() && curdate.getDate() < birth.getDate() && curdate.getFullYear() < birth.getFullYear()) {
         yourage--;
         mon = mon + 12;
+    } else if (curdate.getFullYear() == birth.getFullYear() && curdate.getMonth() == birth.getMonth() && curdate.getDate() < birth.getDate()) {
+        para.innerText = `Seriously Bro! Please be Honest`;
     }
 
-    if (yourage == 1 && mon != 0 && day != 0) {
+    if (yourage == 1 ) {
         para.innerText = `You Are ${yourage} Year,  ${mon} Months and ${Math.abs(day)} days Old`;
     }
     else {
         para.innerText = `You Are ${yourage} Years,  ${mon} Months and ${Math.abs(day)} days Old`;
+    }
+
+    if (yourage < 0) {
+        para.innerText = `Seriously Bro! Please be Honest`
+    }
+
+    if (curdate.getFullYear() < birth.getFullYear()) {
+        para.innerText = `Seriously Bro! Please be Honest`
     }
 
     if (curdate.getMonth() == birth.getMonth() && curdate.getDate() == birth.getDate()) {
@@ -40,10 +49,6 @@ function age() {
         }
 
     }
-
-
-
-
 
 }
 
