@@ -14,46 +14,19 @@ function age() {
     let finalage = Math.floor(cal / ms);
     console.log(finalage);
 
-
-    if (curdate.getMonth() < birth.getMonth()) {
-        yourage--;
-        mon = (mon + 12)%12;
-    }
-    else if (curdate.getMonth() == birth.getMonth() && curdate.getDate() < birth.getDate() && curdate.getFullYear() < birth.getFullYear()) {
-        yourage--;
+    if (mon < 0) {
         mon = mon + 12;
-    } else if (curdate.getFullYear() == birth.getFullYear() && curdate.getMonth() == birth.getMonth() && curdate.getDate() < birth.getDate()) {
-        para.innerText = `Seriously Bro! Please be Honest`;
+        yourage--;
     }
-
-    if (yourage == 1 ) {
-        para.innerText = `You Are ${yourage} Year,  ${mon} Months and ${day} days Old`;
+    if (day < 0) {
+        day = day + 30;
+        mon--;
     }
-    else {
-        para.innerText = `You Are ${yourage} Years,  ${mon} Months and ${day} days Old`;
+    para.innerText = `You are ${yourage} Years ${mon} Months and ${day} Days Old`
+
+    if(finalage!=yourage){
+        para.innerText = `Seriously Bro!`
     }
-
-    if(curdate.getMonth()==birth.getMonth() && day<0){
-        para.innerText = `You Are ${yourage-1} Years,  11 Months and ${30+day} days Old`;
-    }
-
-    if (yourage < 0) {
-        para.innerText = `Seriously Bro! Please be Honest`
-    }
-
-    if (curdate.getFullYear() < birth.getFullYear() || curdate.getMonth()<birth.getMonth() || curdate.getDate()<birth.getDate()) {
-        para.innerText = `Seriously Bro! Please be Honest`
-    }
-
-    if (curdate.getMonth() == birth.getMonth() && curdate.getDate() == birth.getDate()) {
-        if (yourage == 1) {
-            para.innerText = `Happy Birthday! You Are ${yourage} Year Old`
-        } else {
-            para.innerText = `Happy Birthday! You Are ${yourage} Years Old`;
-        }
-
-    }
-
 }
 
 btn.addEventListener('click', age);
