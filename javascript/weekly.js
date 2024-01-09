@@ -11,8 +11,7 @@ function age() {
     let cal = curdate.getTime() - birth.getTime(); //miliseconds
 
     let ms = 365 * 24 * 3600 * 1000;
-    let finalage = Math.floor(cal / ms);
-    console.log(finalage);
+    let finalage = (cal / ms);
 
     if (mon < 0) {
         mon = mon + 12;
@@ -22,11 +21,15 @@ function age() {
         day = day + 30;
         mon--;
     }
+
+    // if(finalage!=yourage){
+    //     para.innerText = `Seriously Bro!`
+    //     return;
+    // }
+    console.log(finalage);
     para.innerText = `You are ${yourage} Years ${mon} Months and ${day} Days Old`
 
-    if(finalage!=yourage){
-        para.innerText = `Seriously Bro!`
-    }
+
 }
 
 btn.addEventListener('click', age);
