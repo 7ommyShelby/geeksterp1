@@ -18,7 +18,7 @@ main{
     width: 50%;
     height: 40%;
     box-shadow: 0px 0px 15px black;
-    background-color: rgb(206, 223, 13);
+    background-color: rgb(255, 255, 255);
     margin-top: 10rem;
     border: none;
     border-radius: 10px;
@@ -39,12 +39,13 @@ button{
     font-weight: 600;
     height: 2rem;
     text-align: center;
-    background-color: rgb(234, 0, 255);
+    background-color: rgb(0, 149, 255);
     border: none;
     border-radius: .5rem;
     padding: 1rem;
     box-shadow: 0px 0px 20px rgb(255, 255, 255);   
     text-transform: uppercase;
+    color: white;
 }
 p{
     font-weight: 400;
