@@ -61,6 +61,23 @@ body {
     text-align: center;
     position: relative;
 }
+
+.top h1{
+    animation: arya 2s ease-in  infinite forwards;
+}
+@keyframes arya{
+    0%{
+        content:"BUISNESS TEMPLATE";
+    }
+    50%{
+        content: "BUISNESS STUDIES";
+    }
+    100%{
+        content:"BUISNESS TEMPLATE" ;
+    }
+}
+
+
 .top span{
     display: flex;
     width: 100%;
@@ -971,4 +988,16 @@ footer{
 }
 .copy p{
     color: #fbfbfb;
+}
+
+@media screen and (max-width:425px){
+    .header{
+        width: 100%;
+    }
+    .menu{
+        display: none;
+    }
+    .top{
+        width: 100%;
+    }
 }
