@@ -41,7 +41,7 @@ function age() {
         para.innerText = `Seriously Bro! Please be Honest`
     }
 
-    if (curdate.getFullYear() < birth.getFullYear()) {
+    if (curdate.getFullYear() < birth.getFullYear() || curdate.getMonth()<birth.getMonth() || curdate.getDate()<birth.getDate()) {
         para.innerText = `Seriously Bro! Please be Honest`
     }
 
