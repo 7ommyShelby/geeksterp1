@@ -17,7 +17,7 @@ function age() {
 
     if (curdate.getMonth() < birth.getMonth()) {
         yourage--;
-        mon = (mon + 12);
+        mon = (mon + 12)%12;
     }
     else if (curdate.getMonth() == birth.getMonth() && curdate.getDate() < birth.getDate() && curdate.getFullYear() < birth.getFullYear()) {
         yourage--;
@@ -27,10 +27,14 @@ function age() {
     }
 
     if (yourage == 1 ) {
-        para.innerText = `You Are ${yourage} Year,  ${mon} Months and ${Math.abs(day)} days Old`;
+        para.innerText = `You Are ${yourage} Year,  ${mon} Months and ${day} days Old`;
     }
     else {
-        para.innerText = `You Are ${yourage} Years,  ${mon} Months and ${Math.abs(day)} days Old`;
+        para.innerText = `You Are ${yourage} Years,  ${mon} Months and ${day} days Old`;
+    }
+
+    if(curdate.getMonth()==birth.getMonth() && day<0){
+        para.innerText = `You Are ${yourage-1} Years,  11 Months and ${30+day} days Old`;
     }
 
     if (yourage < 0) {
