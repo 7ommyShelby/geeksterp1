@@ -11,7 +11,10 @@ function age() {
     let cal = curdate.getTime() - birth.getTime(); //miliseconds
 
     let ms = 365 * 24 * 3600 * 1000;
-    let finalage = (cal / ms);
+    let finalage = Math.floor(cal / ms);
+    let fmonth = Math.floor(cal/ (30*86400000));
+    let fday = Math.floor(cal/86400000);
+
 
     if (mon < 0) {
         mon = mon + 12;
@@ -22,11 +25,14 @@ function age() {
         mon--;
     }
 
-    // if(finalage!=yourage){
-    //     para.innerText = `Seriously Bro!`
-    //     return;
-    // }
-    console.log(finalage);
+    if(finalage<0 || fmonth<0 || fday<0){
+        para.innerText = "Seriously Bro!";
+        return;
+    }
+
+    console.log("years"+finalage);
+    console.log("month"+fmonth);
+    console.log("days"+fday);
     para.innerText = `You are ${yourage} Years ${mon} Months and ${day} Days Old`
 
 
