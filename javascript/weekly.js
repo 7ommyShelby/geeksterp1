@@ -16,7 +16,7 @@ function age() {
     let fday = Math.floor(cal/86400000);
 
 
-    if (mon < 0) {
+    if (mon <0) {
         mon = mon + 12;
         yourage--;
     }
@@ -25,6 +25,11 @@ function age() {
         mon--;
     }
 
+    if(curdate.getMonth()==birth.getMonth() && curdate.getDate()<birth.getDate()){
+            mon = mon+12;
+            yourage--;
+    }
+    
     if(finalage<0 || fmonth<0 || fday<0){
         para.innerText = "Seriously Bro!";
         return;
