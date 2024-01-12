@@ -1,0 +1,234 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Bungee+Spice&display=swap" rel="stylesheet">
+    <!-- css -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Bungee Spice', sans-serif;
+        }
+        body{
+            background-color: rgb(61, 61, 61);
+        }
+
+        main {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            margin-top: 10rem;
+            gap: 2rem;
+
+        }
+
+        .button {
+            --black: #000000;
+            --ch-black: #141414;
+            --eer-black: #1b1b1b;
+            --night-rider: #2e2e2e;
+            --white: #ffffff;
+            --af-white: #f3f3f3;
+            --ch-white: #e1e1e1;
+            border-radius: 8px;
+            width: 140px;
+            height: 40px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 0px 15px;
+            border: none;
+            color: white;
+            position: relative;
+            cursor: pointer;
+            font-weight: 700;
+            transition-duration: .2s;
+            background-color: var(--ch-black);
+        }
+
+        .button:before,
+        .button:after {
+            content: '';
+            position: absolute;
+            left: -2px;
+            top: -2px;
+            border-radius: 10px;
+            background: linear-gradient(45deg,
+                    var(--ch-black), var(--eer-black),
+                    var(--night-rider), var(--ch-white), var(--night-rider),
+                    var(--eer-black), var(--ch-black), var(--ch-black));
+            background-size: 400%;
+            width: calc(100% + 4px);
+            height: calc(100% + 4px);
+            z-index: -1;
+            animation: steam 20s linear infinite;
+        }
+
+        @keyframes steam {
+            0% {
+                background-position: 0 0;
+            }
+
+            50% {
+                background-position: 400% 0;
+            }
+
+            100% {
+                background-position: 0 0;
+            }
+        }
+
+        .button:after {
+            filter: blur(50px);
+        }
+
+
+
+        #btn {
+            display: flex;
+            gap: 2rem;
+            width: 50%;
+            justify-content: center;
+            flex-direction: column;
+            align-items: center;
+        }
+
+        #btn1,
+        #btn2 {
+            width: 45%;
+            height: fit-content;
+            padding: 1rem;
+            cursor: pointer;
+            /* background-color: burlywood; */
+            border: none;
+            border-radius: 5px;
+            font-size: 2rem;
+            align-items: center;
+        }
+
+        #range {
+            width: 100%;
+            display: flex;
+            justify-content: space-evenly;
+
+        }
+
+        .btn-class-name {
+            --primary: 255, 90, 120;
+            --secondary: 150, 50, 60;
+            width: 60px;
+            height: 50px;
+            border: none;
+            outline: none;
+            cursor: pointer;
+            user-select: none;
+            touch-action: manipulation;
+            outline: 10px solid rgb(var(--primary), .5);
+            border-radius: 100%;
+            position: relative;
+            transition: .3s;
+        }
+
+        .btn-class-name .back {
+            background: rgb(var(--secondary));
+            border-radius: 100%;
+            position: absolute;
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+        }
+
+        .btn-class-name .front {
+            background: linear-gradient(0deg, rgba(var(--primary), .6) 20%, rgba(var(--primary)) 50%);
+            box-shadow: 0 .5em 1em -0.2em rgba(var(--secondary), .5);
+            border-radius: 100%;
+            position: absolute;
+            border: 1px solid rgb(var(--secondary));
+            left: 0;
+            top: 0;
+            width: 100%;
+            height: 100%;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            font-size: 1.2rem;
+            font-weight: 600;
+            font-family: inherit;
+            transform: translateY(-15%);
+            transition: .15s;
+            color: rgb(var(--secondary));
+        }
+
+        .btn-class-name:active .front {
+            transform: translateY(0%);
+            box-shadow: 0 0;
+        }
+
+        #val {
+            font-size: 2rem;
+        }
+
+        main h1 {
+            font-size: 3rem;
+            text-transform: uppercase;
+        }
+    </style>
+</head>
+<!-- HTML -->
+
+<body>
+    <main>
+        <h1>Counter</h1>
+        <span id="val">0</span>
+        <div id="btn">
+            <div id="range">
+                <button class="button" id="btn1">+</button>
+                <button class="button" id="btn2">-</button>
+            </div>
+            <button class="btn-class-name" id="btn3">
+                <span class="back"></span>
+                <span class="front">RESET</span>
+            </button>
+        </div>
+    </main>
+    <!-- Javascript -->
+    <script>
+        let btn = document.querySelector("#btn");
+        let val = document.querySelector("#val");
+
+        let count = 0;
+        btn.addEventListener('click', (e) => {
+            // console.log(e);
+            if (e.target.id == "btn1") {
+                count++;
+                // console.log(count);
+                val.innerText = count;
+            } else if (e.target.id == "btn2") {
+
+                // console.log(count);
+                if (count > 0) {
+                    count--;
+                    val.innerText = count;
+
+                }
+            } else if (e.target.tagName === "SPAN") {
+                count = 0;
+                val.innerText = count;
+            }
+        });
+
+
+    </script>
+</body>
+
+</html>
