@@ -1,0 +1,42 @@
+*{
+    padding: 0;
+    margin: 0;
+    box-sizing: border-box;
+}
+
+main{
+
+}
+
+.rc{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+}
+.prod{
+    display: flex;
+}
+.prod{
+    padding: 5px;
+    background-color: aqua;
+    width: 100%;
+    flex-direction: row;
+}
+.static{
+    width: fit-content;
+    display: flex;
+    width: 50%;
+}
+.button{
+    display: flex;
+    width: 50%;
+    justify-content: space-evenly;
+}
+
+.inc, .dec{
+    width: 2rem;
+    height: auto;
+    border-radius: 5px;
+    border: none;
+
+}
