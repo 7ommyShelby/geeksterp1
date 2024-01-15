@@ -2,25 +2,45 @@
     padding: 0;
     margin: 0;
     box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
+}
+body{
+    height: 100vh;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 main{
-
+    height: max-content;
+    width: 60%;
+    display: flex;
+    gap: 1rem;
+    border: 1rem solid gray;
+    align-items: center;
+    justify-content: center;
 }
 
 .rc{
+    text-align: center;
     display: flex;
     width: 50%;
     flex-direction: column;
+    padding: 15px;
+    height: 100%;
+    background-color: aqua;
+    gap: 2rem;
 }
 .prod{
     display: flex;
 }
 .prod{
     padding: 5px;
-    background-color: aqua;
     width: 100%;
     flex-direction: row;
+    background-color: grey;
+    border: none;
+    border-radius: 5px;
 }
 .static{
     width: fit-content;
@@ -38,5 +58,44 @@ main{
     height: auto;
     border-radius: 5px;
     border: none;
+
+}
+
+.lc{
+    display: flex;
+    width: 50%;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+}
+.cart{
+    width: 100%;
+    display: flex;
+    gap: 1.5rem;
+    padding: 15px;
+    flex-direction: column;
+    text-align: center;
+}
+.cart div{
+    background-color: grey;
+    border: none;
+    border-radius: 5px;
+}
+.cart div div{
+    justify-content: space-evenly;
+    padding: 5px;
+    text-align: center;
+    display: flex;
+    gap: 10px;
+}
+
+.ans{
+    display: flex;
+    justify-content: center;
+    background-color: chartreuse;
+    width: 100%;
+}
+.rc, .lc{
+    border: 1rem solid coral;
 
 }

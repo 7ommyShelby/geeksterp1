@@ -28,10 +28,11 @@
             gap: 4rem;
         }
         .key{
-            width: 10rem;
+            min-width: 10rem;
+            max-width: fit-content;
             background-color: orange;
             text-align: center;
-            height: 10rem;
+            height: 10rem; 
             box-shadow:  0px 0px 15px 1px rgb(255, 255, 255);
             align-items: center;
         }
@@ -72,7 +73,7 @@
             height: 20vh;
             flex-wrap: wrap;
             overflow:auto;
-            
+            position: relative;
         }
         .history p{
             display: flex;
@@ -84,6 +85,10 @@
             border: none;
             border-radius: 5px;
             justify-content: center;
+        }
+        .history button{
+            position: fixed;
+            right: 2px;
         }
 
     </style>
@@ -101,6 +106,7 @@
         </div>
         <div class="history">
             <span>HISTORY</span>
+            <button>Clear All</button>
         </div>
     </div>
 
@@ -110,7 +116,7 @@
         let key = document.querySelector(".key");
         let keynum = document.querySelector(".keynum");
         let history = document.querySelector(".history");
-
+        let btn = document.querySelector("button");
 
 
         window.addEventListener("keydown", (e) => {
@@ -128,7 +134,9 @@
             console.log(con);
             // console.log(e.key, e.keyCode);
         });
-
+        btn.addEventListener('click', ()=>{
+            history.innerText = "";
+        })
     </script>
 </body>
 
