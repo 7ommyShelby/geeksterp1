@@ -20,6 +20,8 @@ main{
     border: 1rem solid gray;
     align-items: center;
     justify-content: center;
+    box-shadow: 0px 0px 15px 1px white;
+    border-radius: 15px;
 }
 
 .rc{
@@ -68,6 +70,7 @@ main{
     flex-direction: column;
     align-items: center;
     justify-content: center;
+    
 }
 .cart{
     width: 100%;

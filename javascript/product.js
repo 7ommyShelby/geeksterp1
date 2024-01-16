@@ -46,7 +46,6 @@ function updatechart(e, val) {
 
     console.log(e.target.parentNode.parentNode.children[0].innerText);
 
-
     products.forEach((elem) => {
         if (elem.name == e.target.parentNode.parentNode.children[0].innerText) {
             elem.qty = val;
@@ -56,11 +55,10 @@ function updatechart(e, val) {
 
     let totalprice = 0;
 
-
     products.forEach((element) => {
         if (element.qty > 0) {
             let div = document.createElement("div");
-            totalprice += element.qty * element.price
+            totalprice += element.qty * element.price;
             let ui = `
                  <div>
                      <p>${element.name}</p>
@@ -81,30 +79,7 @@ function updatechart(e, val) {
             <p>No Product Added To The Cart</p>
         `
     }
-
-    // cart.forEach((e) => {
-
-    //     let name = products[e.pid - 1].name;
-    //     let price = products[e.pid - 1].price;
-    //     let count = e.qty;
-    //     let total = price * count;
-
-    // let div = document.createElement("div");
-    //     let ui = `
-    // <div>
-    //     <p>Name: ${name}</p>
-    //     <p>Quantity: ${count}</p>
-    //     <p>Price: ${price}</p>
-    // </div>
-    // `
-    //     div.innerHTML = ui;
-    //     document.querySelector(".cart").appendChild(div);
-
-    // })
 }
-
-
-//  updatechart();
 
 let change = document.querySelector(".rc");
 
