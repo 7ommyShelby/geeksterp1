@@ -1,0 +1,14 @@
+*{
+    padding: 0;margin: 0;
+    box-sizing: border-box;
+}
+.display{
+    margin-top: 2rem;
+    display: flex;
+    gap: 1rem;
+    flex-direction: column;
+}
+.content{
+    display: flex;
+    
+}
