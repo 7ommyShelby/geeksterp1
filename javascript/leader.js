@@ -17,6 +17,10 @@ function addplayer(e) {
 
     displaylist.push(data);
 
+    displaylist.sort((a, b) => {
+        return b.score - a.score;
+    })
+
     let display = document.querySelector(".display");
     display.innerHTML = "";
 
@@ -68,7 +72,7 @@ function refresh() {
         return b.score - a.score;
     })
 
-    console.log(data[score])
+    // console.log(data[score])
 
     let display = document.querySelector(".display");
     display.innerHTML = "";
@@ -88,14 +92,14 @@ function refresh() {
 
         displayname.innerText = displaylist[i].name;
         displaycountry.innerText = displaylist[i].country;
-        displayscore.innerText = displaylist[i].score;
+        // displayscore.innerText = displaylist[i].score;
         inc.innerText = 'Increase';
         dec.innerText = 'Decrease';
 
         inc.addEventListener('click', (e) => {
             e.preventDefault()
             displaylist[i].score += 5;
-            displayscore.innerText = displaylist[i].score;
+            // displayscore.innerText = displaylist[i].score;
             refresh()
         })
 
@@ -103,38 +107,21 @@ function refresh() {
         dec.addEventListener('click', (e) => {
             e.preventDefault()
             displaylist[i].score -= 5;
-            displayscore.innerText = displaylist[i].score;
+            // displayscore.innerText = displaylist[i].score;
             refresh()
         })
+
+        displayscore.innerText = displaylist[i].score;
 
         content.append(displayname, displaycountry, displayscore, inc, dec)
         display.appendChild(content);
     }
 
 }
-// inc.addEventListener('click', (e) => {
-//     e.preventDefault()
+// function plus() {
 //     displaylist[i].score += 5;
-//     displayscore.innerText = displaylist[i].score;
-//     refresh()
-// });
-
-// dec.addEventListener('click', (e) => {
-//     e.preventDefault()
-//     displaylist[i].score -= 5;
-//     displayscore.innerText = displaylist[i].score;
-//     refresh()
-// })
-// function increase() {
-//     displaylist[i].score += 5;
-//     displayscore.innerText = displaylist[i].score;
 //     refresh()
 // }
 
-// function decrease() {
-//     displaylist[i].score += 5;
-//     displayscore.innerText = displaylist[i].score;
-//     refresh()
-// }
 
 document.querySelector(".btn").addEventListener('click', addplayer);
