@@ -21,48 +21,45 @@ function addplayer(e) {
         return b.score - a.score;
     })
 
-    let display = document.querySelector(".display");
-    display.innerHTML = "";
-
+    // let display = document.querySelector(".display");
+    // display.innerHTML = "";
 
     for (let i = 0; i < displaylist.length; i++) {
 
-        let content = document.createElement("div");
-        content.classList.add("content")
-        const displayname = document.createElement('p');
-        const displaycountry = document.createElement('p');
-        const displayscore = document.createElement('p');
+        // let content = document.createElement("div");
+        // content.classList.add("content")
+        // const displayname = document.createElement('p');
+        // const displaycountry = document.createElement('p');
+        // const displayscore = document.createElement('p');
 
-        const inc = document.createElement('button')
-        const dec = document.createElement('button')
-
-
-        displayname.innerText = displaylist[i].name;
-        displaycountry.innerText = displaylist[i].country;
-        displayscore.innerText = displaylist[i].score;
-        inc.innerText = 'Increase';
-        dec.innerText = 'Decrease';
+        // const inc = document.createElement('button')
+        // const dec = document.createElement('button')
 
 
-        inc.addEventListener('click', (e) => {
-            e.preventDefault()
-            displaylist[i].score += 5;
-            displayscore.innerText = displaylist[i].score;
-            refresh()
-        })
+        // displayname.innerText = displaylist[i].name;
+        // displaycountry.innerText = displaylist[i].country;
+        // displayscore.innerText = displaylist[i].score;
+        // inc.innerText = 'Increase';
+        // dec.innerText = 'Decrease';
+
+        // inc.addEventListener('click', (e) => {
+        //     e.preventDefault()
+        //     displaylist[i].score += 5;
+        //      displayscore.innerText = displaylist[i].score;
+        //     // refresh()
+        // })
 
 
-        dec.addEventListener('click', (e) => {
-            e.preventDefault()
-            displaylist[i].score -= 5;
-            displayscore.innerText = displaylist[i].score;
-            refresh()
-        })
+        // dec.addEventListener('click', (e) => {
+        //     e.preventDefault()
+        //     displaylist[i].score -= 5;
+        //      displayscore.innerText = displaylist[i].score;
+        //     // refresh()
+        // })
 
-
-        content.append(displayname, displaycountry, displayscore, inc, dec)
-        display.appendChild(content);
-
+        // content.append(displayname, displaycountry, displayscore, inc, dec)
+        // display.appendChild(content);
+         refresh()
     }
 }
 
@@ -71,8 +68,6 @@ function refresh() {
     displaylist.sort((a, b) => {
         return b.score - a.score;
     })
-
-    // console.log(data[score])
 
     let display = document.querySelector(".display");
     display.innerHTML = "";
@@ -118,10 +113,6 @@ function refresh() {
     }
 
 }
-// function plus() {
-//     displaylist[i].score += 5;
-//     refresh()
-// }
 
 
 document.querySelector(".btn").addEventListener('click', addplayer);

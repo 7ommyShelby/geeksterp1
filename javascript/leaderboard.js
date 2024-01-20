@@ -1,63 +1,92 @@
+//asdding data in obj add is triggerred store info
+// sorting induced in function get array
+//dom update (button events) call sort
+//
 
-const displaylist = [];
 
-function addplayer(e) {
+const list = []
 
-    e.preventDefault()
+const firstname = document.querySelector("#first")
+const lastname = document.querySelector("#last")
+const playercountry = document.querySelector("#country")
+const playerscore = document.querySelector("#score")
+const display = document.querySelector('.display');
 
-    let first = document.getElementById("first")
-    let last = document.getElementById("last")
-    let country = document.getElementById("country")
-    let score = document.getElementById("score")
+// creation
+function creation(e) {
+
+    e.preventDefault();
 
     const data = {
-        name: first.value + " " + last.value,
-        country: country.value,
-        score: Number(score.value)
+        name: firstname.value + " " + lastname.value,
+        country: playercountry.value,
+        score: Number(playerscore.value)
     }
-    displaylist.push(data);
+    list.push(data);
 
-    console.log(displaylist);
+    domupdate(list);
 
-    let display = document.querySelector(".display");
+    // sort(list);
+
+    console.log(list);
+    console.log(display);
+}
+
+
+//sorting
+
+function sort(array) {
+    array.sort((a, b) => {
+        return b.score - a.score
+    })
+}
+
+
+//domupdate display data
+function domupdate(list) {
+
     display.innerHTML = "";
-    for (let i = 0; i < displaylist.length; i++) {
 
-        let content = document.createElement("div");
-        content.classList.add("content")
-        const displayname = document.createElement('p');
-        const displaycountry = document.createElement('p');
-        const displayscore = document.createElement('p');
+    sort(list);
 
+    list.forEach((e) => {
 
+        let content = document.createElement('div');
+        let Name = document.createElement('p')
+        let Country = document.createElement('p')
+        let Score = document.createElement('p')
+        content.classList.add('content');
         const inc = document.createElement('button')
         const dec = document.createElement('button')
 
-        displayname.innerText = displaylist[i].name;
-        displaycountry.innerText = displaylist[i].country;
-        displayscore.innerText = displaylist[i].score;
+        Name.innerText = e.name;
+        Country.innerText = e.country;
+        Score.innerText = e.score;
         inc.innerText = 'Increase';
         dec.innerText = 'Decrease';
 
-        content.append(displayname, displaycountry, displayscore, inc, dec)
-        display.appendChild(content);
-
         inc.addEventListener('click', (e) => {
-            e.preventDefault()
-            displaylist[i].score += 5;
-            displayscore.innerText = displaylist[i].score;
+            e.preventDefault();
+            console.log("clicked", Score.innerText)
+            
+            Score.innerText = e.score;
+            
+            domupdate(list);
+            
         });
 
-        dec.addEventListener('click', (e) => {
-            e.preventDefault()
-            displaylist[i].score -= 5;
-            displayscore.innerText = displaylist[i].score;
-        });
+        // dec.addEventListener('click', decreasehandler);
 
-    }
-    console.log(first.value, country.value, score.value)
+        content.append(Name, Country, Score, inc, dec);
+        display.appendChild(content);
+        // console.log(display)
+    });
 }
 
 
 
-document.querySelector(".btn").addEventListener('click', addplayer);
+
+console.log();
+
+
+document.querySelector(".btn").addEventListener('click', creation);
