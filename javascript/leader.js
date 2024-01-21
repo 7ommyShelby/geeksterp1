@@ -111,7 +111,7 @@ function refresh() {
         content.append(displayname, displaycountry, displayscore, inc, dec)
         display.appendChild(content);
     }
-
+z
 }
 
 

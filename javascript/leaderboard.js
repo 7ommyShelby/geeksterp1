@@ -29,7 +29,7 @@ function creation(e) {
     // sort(list);
 
     console.log(list);
-    console.log(display);
+
 }
 
 
@@ -41,7 +41,6 @@ function sort(array) {
     })
 }
 
-
 //domupdate display data
 function domupdate(list) {
 
@@ -49,7 +48,7 @@ function domupdate(list) {
 
     sort(list);
 
-    list.forEach((e) => {
+    list.forEach((player) => {
 
         let content = document.createElement('div');
         let Name = document.createElement('p')
@@ -58,35 +57,57 @@ function domupdate(list) {
         content.classList.add('content');
         const inc = document.createElement('button')
         const dec = document.createElement('button')
-
-        Name.innerText = e.name;
-        Country.innerText = e.country;
-        Score.innerText = e.score;
+        const del = document.createElement('button')
+        
+        Name.innerText = player.name;
+        Country.innerText = player.country;
+        Score.innerText = player.score;
         inc.innerText = 'Increase';
         dec.innerText = 'Decrease';
+        del.innerText = 'Delete'
+
 
         inc.addEventListener('click', (e) => {
             e.preventDefault();
-            console.log("clicked", Score.innerText)
-            
-            Score.innerText = e.score;
-            
+            console.log("clicked", e)
+            const index = list.findIndex(item => item.name === player.name);
+            if (index !== -1) {
+                list[index].score += 5;
+                Score.innerText = list[index].score;
+                console.log(index)
+            }
             domupdate(list);
-            
         });
 
-        // dec.addEventListener('click', decreasehandler);
+        dec.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("clicked", e)
+            const index = list.findIndex(item => item.name === player.name);
+            if (index !== -1) {
+                list[index].score -= 5;
+                Score.innerText = list[index].score;
+                console.log(index)
+            }
+            domupdate(list);
+        });
 
-        content.append(Name, Country, Score, inc, dec);
+        del.addEventListener('click', (e) => {
+            e.preventDefault();
+            console.log("clicked", e)
+            const index = list.findIndex(item => item.name === player.name);
+            if (index !== -1) {
+                list.splice(index, 1);
+                console.log(index)
+            }
+            domupdate(list);
+        })
+
+        content.append(Name, Country, Score, inc, dec, del);
         display.appendChild(content);
         // console.log(display)
     });
 }
 
-
-
-
 console.log();
-
 
 document.querySelector(".btn").addEventListener('click', creation);
