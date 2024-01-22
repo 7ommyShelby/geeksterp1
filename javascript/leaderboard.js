@@ -30,6 +30,10 @@ function creation(e) {
 
     console.log(list);
 
+    firstname.value ="";
+    lastname.value ="";
+    playercountry.value ="";
+    playerscore.value ="";
 }
 
 
@@ -48,7 +52,7 @@ function domupdate(list) {
 
     sort(list);
 
-    list.forEach((player) => {
+    list.forEach((player, idx) => {
 
         let content = document.createElement('div');
         let Name = document.createElement('p')
@@ -69,42 +73,14 @@ function domupdate(list) {
         del.innerText = 'Delete';
         del.classList.add('remove')
 
-
-        // inc.addEventListener('click', (e) => {
-
-        // });
-
-        dec.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log("clicked", e)
-            const index = list.findIndex(item => item.name === player.name);
-            if (index !== -1) {
-                list[index].score -= 5;
-                Score.innerText = list[index].score;
-                console.log(index)
-            }
-            domupdate(list);
-        });
-
-        del.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log("clicked", e)
-            const index = list.findIndex(item => item.name === player.name);
-            if (index !== -1) {
-                list.splice(index, 1);
-                console.log(index)
-            }
-            domupdate(list);
-        });
-
         content.append(Name, Country, Score, inc, dec, del);
         display.appendChild(content);
-        // console.log(display)
+      
     });
 }
 
 display.addEventListener("click", (e) => {
-    if (e.target.classList.contains("plus")) {
+    if (e.target.className==="plus") {
         e.preventDefault();
         console.log("clicked", e)
         const index = list.findIndex(item => item.name === e.target.parentElement.firstElementChild.innerText);
@@ -115,8 +91,37 @@ display.addEventListener("click", (e) => {
         }
         domupdate(list);
     }
+});
+
+display.addEventListener("click", (e) => {
+    if (e.target.className==="minus") {
+        e.preventDefault();
+        console.log("clicked", e)
+        const index = list.findIndex(item => item.name === e.target.parentElement.firstElementChild.innerText);
+        if (index !== -1) {
+            list[index].score -= 5;
+            e.target.parentElement.children[2].innerText = list[index].score;
+            console.log(index)
+        }
+        domupdate(list);
+    }
+});
+
+display.addEventListener("click", (e) => {
+    if (e.target.className==="remove") {
+        e.preventDefault();
+        console.log("clicked", e)
+        const index = list.findIndex(item => item.name === e.target.parentElement.firstElementChild.innerText);
+        if (index !== -1) {
+            list.splice(index, 1);
+            console.log(index)
+        }
+        domupdate(list);
+    }
 })
 
-console.log();
+
+
+
 
 document.querySelector(".btn").addEventListener('click', creation);
