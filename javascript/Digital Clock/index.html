@@ -1,0 +1,196 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Digital Clock</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Josefin+Sans:ital,wght@0,600;0,700;1,400&display=swap"
+        rel="stylesheet">
+
+    <!-- CSS -->
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Josefin Sans', sans-serif;
+        }
+
+        body {
+            background-image: url(./pexels-dimka-nevedimka-8971501.jpg);
+            background-size: 100vw 100vh;
+            background-repeat: no-repeat;
+        }
+
+        main {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 1rem;
+
+        }
+
+        .clock {
+            display: flex;
+            height: 20%;
+            align-items: end;
+            width: 600px;
+            justify-content: center;
+            gap: 1rem;
+            position: relative;
+        }
+
+        .hr,
+        .min,
+        .sec {
+            background-color: rgba(137, 43, 226, 0.369);
+            display: flex;
+            align-items: center;
+            font-size: 4rem;
+            height: 100%;
+            width: 20%;
+            text-align: center;
+            padding: 10px;
+            position: relative;
+
+        }
+
+        .text {
+            background-color: rgba(137, 43, 226, 0.353);
+            padding: 10px;
+        }
+
+        .logo {
+            bottom: 1px;
+            left: 0;
+            position: absolute;
+            width: 100%;
+            height: 20%;
+            text-transform: uppercase
+        }
+
+        h2 {
+            text-transform: uppercase;
+        }
+
+        p {
+            display: none;
+        }
+    </style>
+</head>
+
+<body>
+
+    <main>
+        <p class="morning">"I get up every morning and it’s going to be a great day. You never know when it’s going to
+            be over, so I refuse to have a bad day." – Paul Henderson</p>
+        <p class="afternoon">Time for a nap boy!</p>
+        <p class="evening">Spend time with your family <br>
+            "A man who doesn't spend time with his family can never be a real man." - The Godfather</p>
+        <p class="night">"The night is darkest just before the dawn. And I promise you, the dawn is coming." - Harvey
+            Dent, The Dark Knight</p>
+
+
+
+
+        <h2>Digital clock</h2>
+
+        <div class="clock">
+            <div class="hr">
+
+            </div>
+            <div class="min">
+
+            </div>
+            <div class="sec">
+
+            </div>
+            <span class="text"></span>
+        </div>
+
+    </main>
+
+
+    <!-- javascript -->
+    <script>
+
+        let hours = document.querySelector(".hr")
+        let minutes = document.querySelector(".min")
+        let seconds = document.querySelector(".sec")
+        let span = document.querySelector(".text")
+
+
+        let morning = document.querySelector(".morning");
+        let afternoon = document.querySelector(".afternoon");
+        let evening = document.querySelector(".evening");
+        let night = document.querySelector(".night");
+
+        // console.log(hrs, min, sec)
+
+        setInterval(() => {
+            let time = new Date();
+            let hrs = time.getHours();
+            let min = time.getMinutes();
+            let sec = time.getSeconds();
+            let line = "AM"
+
+            if (hrs > 12) {
+                hrs -= 12;
+                line = "PM"
+            }
+
+            if (hrs == 0) {
+                hrs = 12;
+            }
+
+            if (hrs < 10) {
+                hours.innerText = `0${hrs}`;
+            } else {
+                hours.innerText = `${hrs}`;
+            }
+            if (min < 10) {
+                minutes.innerText = `0${min}`;
+            } else {
+                minutes.innerText = `${min}`;
+            }
+            if (sec < 10) {
+                seconds.innerText = `0${sec}`;
+            } else {
+                seconds.innerText = `${sec}`;
+            }
+
+            span.innerText = `${line}`;
+            // console.log(hrs, min, sec)
+
+
+            if (hrs > 4 && span === "AM") {
+                morning.style.display = "block";
+            } else if (hrs <= 12 && span === "PM" && hrs < 3) {
+                afternoon.style.display = "block";
+            } else if (hrs > 11 && span === "PM") {
+                night.style.display = "block";
+            }else if(hrs>3  && span==="PM"){
+                evening.style.display = 'block';
+            }
+
+        }, 1000);
+
+        // if (hrs > 4 && span === "AM") {
+        //     morning.style.display = "block";
+        // } else if (hrs <= 12 && span === "PM" && hrs < 3) {
+        //     afternoon.style.display = "block";
+        // } else if (hrs > 11 && span === "PM") {
+        //     night.style.display = "block";
+        // } else if (hrs > 3 && span === "PM") {
+        //     evening.style.display = 'block';
+        // }
+
+    </script>
+</body>
+
+</html>

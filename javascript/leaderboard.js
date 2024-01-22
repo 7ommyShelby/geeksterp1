@@ -58,26 +58,21 @@ function domupdate(list) {
         const inc = document.createElement('button')
         const dec = document.createElement('button')
         const del = document.createElement('button')
-        
+
         Name.innerText = player.name;
         Country.innerText = player.country;
         Score.innerText = player.score;
         inc.innerText = 'Increase';
+        inc.classList.add('plus');
         dec.innerText = 'Decrease';
-        del.innerText = 'Delete'
+        dec.classList.add('minus');
+        del.innerText = 'Delete';
+        del.classList.add('remove')
 
 
-        inc.addEventListener('click', (e) => {
-            e.preventDefault();
-            console.log("clicked", e)
-            const index = list.findIndex(item => item.name === player.name);
-            if (index !== -1) {
-                list[index].score += 5;
-                Score.innerText = list[index].score;
-                console.log(index)
-            }
-            domupdate(list);
-        });
+        // inc.addEventListener('click', (e) => {
+
+        // });
 
         dec.addEventListener('click', (e) => {
             e.preventDefault();
@@ -100,13 +95,27 @@ function domupdate(list) {
                 console.log(index)
             }
             domupdate(list);
-        })
+        });
 
         content.append(Name, Country, Score, inc, dec, del);
         display.appendChild(content);
         // console.log(display)
     });
 }
+
+display.addEventListener("click", (e) => {
+    if (e.target.classList.contains("plus")) {
+        e.preventDefault();
+        console.log("clicked", e)
+        const index = list.findIndex(item => item.name === e.target.parentElement.firstElementChild.innerText);
+        if (index !== -1) {
+            list[index].score += 5;
+            e.target.parentElement.children[2].innerText = list[index].score;
+            console.log(index)
+        }
+        domupdate(list);
+    }
+})
 
 console.log();
 
