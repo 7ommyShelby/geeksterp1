@@ -52,7 +52,7 @@ function domupdate(list) {
 
     sort(list);
 
-    list.forEach((player, idx) => {
+    list.forEach((player) => {
 
         let content = document.createElement('div');
         let Name = document.createElement('p')
@@ -80,24 +80,27 @@ function domupdate(list) {
 }
 
 display.addEventListener("click", (e) => {
-    if (e.target.className==="plus") {
+    if (e.target.classList.contains("plus")) {
         e.preventDefault();
-        console.log("clicked", e)
-        const index = list.findIndex(item => item.name === e.target.parentElement.firstElementChild.innerText);
+        console.log("clicked")
+        const index = list.findIndex(item => {
+            console.log(item.name);
+            return item.name.toLowerCase() === e.target.parentElement.firstElementChild.innerText.toLowerCase()
+            
+         }
+            );
+        console.log(e.target.parentElement.firstElementChild.innerText.toLowerCase(), index);
         if (index !== -1) {
             list[index].score += 5;
             e.target.parentElement.children[2].innerText = list[index].score;
-            console.log(index)
+            console.log(index);
         }
         domupdate(list);
     }
-});
-
-display.addEventListener("click", (e) => {
-    if (e.target.className==="minus") {
+    else if (e.target.className==="minus") {
         e.preventDefault();
-        console.log("clicked", e)
-        const index = list.findIndex(item => item.name === e.target.parentElement.firstElementChild.innerText);
+        console.log("clicked",e.target)
+        const index = list.findIndex(item => item.name.toLowerCase() === e.target.parentElement.firstElementChild.innerText.toLowerCase());
         if (index !== -1) {
             list[index].score -= 5;
             e.target.parentElement.children[2].innerText = list[index].score;
@@ -105,23 +108,17 @@ display.addEventListener("click", (e) => {
         }
         domupdate(list);
     }
-});
-
-display.addEventListener("click", (e) => {
-    if (e.target.className==="remove") {
+    else if (e.target.className==="remove") {
         e.preventDefault();
         console.log("clicked", e)
-        const index = list.findIndex(item => item.name === e.target.parentElement.firstElementChild.innerText);
+        const index = list.findIndex(item => item.name.toLowerCase() === e.target.parentElement.firstElementChild.innerText.toLowerCase());
         if (index !== -1) {
             list.splice(index, 1);
             console.log(index)
         }
         domupdate(list);
     }
-})
 
+});
 
-
-
-
-document.querySelector(".btn").addEventListener('click', creation);
+document.querySelector("form").addEventListener('submit', creation);
