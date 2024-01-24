@@ -36,6 +36,7 @@ button{
     text-transform: uppercase;
     font-weight: 600;
 }
+
 button:hover{
    transform: scale(1.1);
     transition: all .5s ease;
