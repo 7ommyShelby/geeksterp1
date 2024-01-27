@@ -6,7 +6,7 @@ async function findtypes() {
     let fetchedtypes = await fetch('https://pokeapi.co/api/v2/type/')
 
     let types = await fetchedtypes.json();
-    // console.log(types);
+     console.log(types);
 
     types.results.forEach(element => {
         let options = document.createElement('option');
@@ -53,8 +53,8 @@ async function pokeball() {
         let names = document.createElement('span');
         names.classList.add('name')
         let txttype = document.createElement('span')
-        txttype.innerText = finaltype.types[0].type.name ;
-        txttype.innerText = finaltype.types[1].type.name ;
+        txttype.innerText = finaltype.types[0].type.name;
+        txttype.innerText = finaltype.types[1].type.name;
         txttype.classList.add('type')
         names.innerText = finaltype.name;
         div.append(img, names, txttype);
@@ -109,7 +109,13 @@ async function pokedextab() {
                     txt.classList.add('name')
                     let txttype = document.createElement('span')
                     txttype.classList.add('type')
-                    txttype.innerText = y.types[0].type.name;
+                    // txttype.innerText = y.types[0].type.name;
+
+
+                    y.types.forEach((e)=>{
+                       console.log(e.type.name);
+                    })
+
                     txt.innerText = y.name;
                     div.append(img, txt, txttype);
                     display.append(div);
@@ -120,7 +126,7 @@ async function pokedextab() {
     //   console.log(xmen);
 }
 
-
+//txttype.innerText = y.types[1].type.name;
 pokedextab();
 
 findtypes();
