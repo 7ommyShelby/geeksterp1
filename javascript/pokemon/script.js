@@ -47,7 +47,7 @@ async function pokeball() {
         let finaltype = await listoftypes.json();
         //    console.log(finaltype);   object here
 
-        
+
         let flipcard = document.createElement('div')
         flipcard.classList.add('flip-card')
         let flipcardinner = document.createElement('div')
@@ -61,6 +61,56 @@ async function pokeball() {
         let txttype = document.createElement('span')
         txttype.classList.add('type')
         txttype.innerText = finaltype.types[0].type.name;
+
+        if (txttype.innerText == "normal") {
+            flipcardinner.style.backgroundColor = "grey";
+        } else if (txttype.innerText == "flying") {
+            flipcardinner.style.backgroundColor = "lightblue";
+        } else if (txttype.innerText == 'ground') {
+            flipcardinner.style.backgroundColor = "silver";
+        } else if (txttype.innerText == "fire") {
+            flipcardinner.style.backgroundColor = "crimson";
+        } else if (txttype.innerText == 'fighting') {
+            flipcardinner.style.backgroundColor = "brown";
+        } else if (txttype.innerText == 'poison') {
+            flipcardinner.style.backgroundColor = "violet";
+        } else if (txttype.innerText == 'electric') {
+            flipcardinner.style.backgroundColor = "yellow";
+        } else if (txttype.innerText == 'water') {
+            flipcardinner.style.backgroundColor = "aqua";
+        }
+        else if (txttype.innerText == 'rock') {
+            flipcardinner.style.backgroundColor = "rosybrown";
+        }
+        else if (txttype.innerText == 'dark') {
+            flipcardinner.style.backgroundColor = "pink";
+        }
+        else if (txttype.innerText == 'fairy') {
+            flipcardinner.style.backgroundColor = "darkviolet";
+        }
+        else if (txttype.innerText == 'ice') {
+            flipcardinner.style.backgroundColor = "cornflowerblue";
+        }
+        else if (txttype.innerText == 'bug') {
+            flipcardinner.style.backgroundColor = "lightgreen";
+        }
+        else if (txttype.innerText == 'dragon') {
+            flipcardinner.style.backgroundColor = "firebrick";
+        }
+        else if (txttype.innerText == 'psychic') {
+            flipcardinner.style.backgroundColor = "darkgoldenrod";
+        }
+        else if (txttype.innerText == 'grass') {
+            flipcardinner.style.backgroundColor = "lightgreen";
+        }
+        else if (txttype.innerText == 'ghost') {
+            flipcardinner.style.backgroundColor = "slategrey";
+        }
+        else if (txttype.innerText == 'steel') {
+            flipcardinner.style.backgroundColor = "mediumturquoise";
+        }
+
+
         txt.innerText = finaltype.name;
         let flipcardback = document.createElement('div');
         flipcardback.classList.add('flip-card-back')
@@ -84,7 +134,7 @@ async function pokeball() {
 
 
 
-        
+
     })
 
     // console.log(arr,"click");
@@ -113,9 +163,11 @@ async function pokedextab() {
     let pdjson = await pd.json();
 
     let xmen = pdjson.results.map(async (e) => {
-        let a = await fetch(e.url);
-        let b = await a.json();
-        return b;
+        
+            let a = await fetch(e.url);
+            let b = await a.json();
+            return b;
+        
     })
     Promise.all(xmen).then(
         (res) => {
@@ -142,11 +194,62 @@ async function pokedextab() {
                     let txttype = document.createElement('span')
                     txttype.classList.add('type')
                     txttype.innerText = y.types[0].type.name;
+
+                    if (txttype.innerText == "normal") {
+                        flipcardinner.style.backgroundColor = "grey";
+                    } else if (txttype.innerText == "flying") {
+                        flipcardinner.style.backgroundColor = "lightblue";
+                    } else if (txttype.innerText == 'ground') {
+                        flipcardinner.style.backgroundColor = "silver";
+                    } else if (txttype.innerText == "fire") {
+                        flipcardinner.style.backgroundColor = "crimson";
+                    } else if (txttype.innerText == 'fighting') {
+                        flipcardinner.style.backgroundColor = "brown";
+                    } else if (txttype.innerText == 'poison') {
+                        flipcardinner.style.backgroundColor = "violet";
+                    } else if (txttype.innerText == 'electric') {
+                        flipcardinner.style.backgroundColor = "yellow";
+                    } else if (txttype.innerText == 'water') {
+                        flipcardinner.style.backgroundColor = "aqua";
+                    }
+                    else if (txttype.innerText == 'rock') {
+                        flipcardinner.style.backgroundColor = "rosybrown";
+                    }
+                    else if (txttype.innerText == 'dark') {
+                        flipcardinner.style.backgroundColor = "pink";
+                    }
+                    else if (txttype.innerText == 'fairy') {
+                        flipcardinner.style.backgroundColor = "darkviolet";
+                    }
+                    else if (txttype.innerText == 'ice') {
+                        flipcardinner.style.backgroundColor = "cornflowerblue";
+                    }
+                    else if (txttype.innerText == 'bug') {
+                        flipcardinner.style.backgroundColor = "lightgreen";
+                    }
+                    else if (txttype.innerText == 'dragon') {
+                        flipcardinner.style.backgroundColor = "firebrick";
+                    }
+                    else if (txttype.innerText == 'psychic') {
+                        flipcardinner.style.backgroundColor = "darkgoldenrod";
+                    }
+                    else if (txttype.innerText == 'grass') {
+                        flipcardinner.style.backgroundColor = "lightgreen";
+                    }
+                    else if (txttype.innerText == 'ghost') {
+                        flipcardinner.style.backgroundColor = "slategrey";
+                    }
+                    else if (txttype.innerText == 'steel') {
+                        flipcardinner.style.backgroundColor = "mediumturquoise";
+                    }
+
                     txt.innerText = y.name;
                     let flipcardback = document.createElement('div');
                     flipcardback.classList.add('flip-card-back')
                     let backname = document.createElement('span');
+                    backname.classList.add("bn")
                     let abilities = document.createElement('span');
+                    abilities.classList.add('ab')
 
                     let str = "";
                     y.abilities.forEach((e) => {
