@@ -115,7 +115,9 @@ async function pokeball() {
         let flipcardback = document.createElement('div');
         flipcardback.classList.add('flip-card-back')
         let backname = document.createElement('span');
+        backname.classList.add("bn")
         let abilities = document.createElement('span');
+        abilities.classList.add('ab')
 
         let str = "";
         finaltype.abilities.forEach((e) => {
@@ -274,7 +276,12 @@ async function pokedextab() {
 
 //txttype.innerText = y.types[1].type.name;
 pokedextab();
-
 findtypes();
+
+document.querySelector('#search').addEventListener('keyup', (e)=>{
+
+
+
+})
 
 filtertype.addEventListener('click', pokeball)
