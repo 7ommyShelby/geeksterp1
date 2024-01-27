@@ -102,23 +102,35 @@ async function pokedextab() {
                     let x = await fetch(elem.pokemon.url)
                     let y = await x.json();
                     // console.log(y);
-                    let div = document.createElement('div')
+
+
+                    let flipcard = document.createElement('div')
+                    flipcard.classList.add('flip-card')
+                    let flipcardinner = document.createElement('div')
+                    flipcardinner.classList.add('flip-card-inner')
+                    let flipcardfront = document.createElement('div')
+                    flipcardfront.classList.add('flip-card-front')
                     let img = document.createElement('img')
                     img.setAttribute('src', y.sprites.front_default)
                     let txt = document.createElement('span')
                     txt.classList.add('name')
                     let txttype = document.createElement('span')
                     txttype.classList.add('type')
-                    // txttype.innerText = y.types[0].type.name;
-
-
-                    y.types.forEach((e)=>{
-                       console.log(e.type.name);
-                    })
-
+                    txttype.innerText = y.types[0].type.name;
                     txt.innerText = y.name;
-                    div.append(img, txt, txttype);
-                    display.append(div);
+                    let flipcardback = document.createElement('div');
+                    flipcardback.classList.add('flip-card-back')
+                    let backname = document.createElement('span');
+                    backname.innerText = y.name
+
+
+                   
+
+                    flipcardback.append(backname)
+                    flipcardfront.append(img, txt, txttype);
+                    flipcardinner.append(flipcardfront, flipcardback )
+                    flipcard.append(flipcardinner);
+                    display.append(flipcard);
                 })
             })
         }
