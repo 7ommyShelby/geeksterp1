@@ -6,7 +6,7 @@ async function findtypes() {
     let fetchedtypes = await fetch('https://pokeapi.co/api/v2/type/')
 
     let types = await fetchedtypes.json();
-     console.log(types);
+    console.log(types);
 
     types.results.forEach(element => {
         let options = document.createElement('option');
@@ -47,19 +47,44 @@ async function pokeball() {
         let finaltype = await listoftypes.json();
         //    console.log(finaltype);   object here
 
-        let div = document.createElement('div')
+        
+        let flipcard = document.createElement('div')
+        flipcard.classList.add('flip-card')
+        let flipcardinner = document.createElement('div')
+        flipcardinner.classList.add('flip-card-inner')
+        let flipcardfront = document.createElement('div')
+        flipcardfront.classList.add('flip-card-front')
         let img = document.createElement('img')
-        img.setAttribute('src', finaltype.sprites.front_default);
-        let names = document.createElement('span');
-        names.classList.add('name')
+        img.setAttribute('src', finaltype.sprites.front_default)
+        let txt = document.createElement('span')
+        txt.classList.add('name')
         let txttype = document.createElement('span')
-        txttype.innerText = finaltype.types[0].type.name;
-        txttype.innerText = finaltype.types[1].type.name;
         txttype.classList.add('type')
-        names.innerText = finaltype.name;
-        div.append(img, names, txttype);
-        display.append(div);
-        // console.log(finaltype.sprites.front_default)
+        txttype.innerText = finaltype.types[0].type.name;
+        txt.innerText = finaltype.name;
+        let flipcardback = document.createElement('div');
+        flipcardback.classList.add('flip-card-back')
+        let backname = document.createElement('span');
+        let abilities = document.createElement('span');
+
+        let str = "";
+        finaltype.abilities.forEach((e) => {
+            str += e.ability.name + ", ";
+        })
+
+        backname.innerText = finaltype.name
+        abilities.innerText = str.slice(0, str.length - 2);
+
+
+        flipcardback.append(backname, abilities)
+        flipcardfront.append(img, txt, txttype);
+        flipcardinner.append(flipcardfront, flipcardback)
+        flipcard.append(flipcardinner);
+        display.append(flipcard);
+
+
+
+        
     })
 
     // console.log(arr,"click");
@@ -121,14 +146,20 @@ async function pokedextab() {
                     let flipcardback = document.createElement('div');
                     flipcardback.classList.add('flip-card-back')
                     let backname = document.createElement('span');
+                    let abilities = document.createElement('span');
+
+                    let str = "";
+                    y.abilities.forEach((e) => {
+                        str += e.ability.name + ", ";
+                    })
+
                     backname.innerText = y.name
+                    abilities.innerText = str.slice(0, str.length - 2);
 
 
-                   
-
-                    flipcardback.append(backname)
+                    flipcardback.append(backname, abilities)
                     flipcardfront.append(img, txt, txttype);
-                    flipcardinner.append(flipcardfront, flipcardback )
+                    flipcardinner.append(flipcardfront, flipcardback)
                     flipcard.append(flipcardinner);
                     display.append(flipcard);
                 })

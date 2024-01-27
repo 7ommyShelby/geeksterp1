@@ -18,6 +18,7 @@ main {
     display: flex;
     justify-content: center;
     margin-bottom: 2rem;
+    align-items: center;
 }
 
 .first {
@@ -57,7 +58,6 @@ select {
 }
 
 /* .display div {
-    
     border: none;
     border-radius: 10px;
     box-shadow: 0px 0px 10px black;
@@ -81,6 +81,7 @@ img {
     height: 12rem;
     width: 11rem;
     display: flex;
+    border: .5px solid black;
 }
 
 .type {
@@ -110,8 +111,7 @@ img {
     background-color: transparent;
     width: 20rem;
     height: 22rem;
-    box-shadow: 0px 0px 10px black;
-    border: none;
+    border: 1px solid black;
     border-radius: 10px;
     perspective: 1000px; 
   }
@@ -122,7 +122,7 @@ img {
     width: 100%;
     height: 100%;
     text-align: center;
-    transition: transform 0.8s;
+    transition: transform 1s;
     transform-style: preserve-3d;
   }
   
