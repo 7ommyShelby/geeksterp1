@@ -161,6 +161,9 @@ async function pokeball() {
 
 
 async function pokedextab() {
+
+    display.innerHTML = "";
+
     let pd = await fetch('https://pokeapi.co/api/v2/type/');
     let pdjson = await pd.json();
 
@@ -274,14 +277,10 @@ async function pokedextab() {
     //   console.log(xmen);
 }
 
-//txttype.innerText = y.types[1].type.name;
 pokedextab();
+
 findtypes();
 
-document.querySelector('#search').addEventListener('keyup', (e)=>{
-
-
-
-})
+document.querySelector('.reset').addEventListener('click', pokedextab)
 
 filtertype.addEventListener('click', pokeball)

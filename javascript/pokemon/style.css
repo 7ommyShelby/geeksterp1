@@ -33,7 +33,16 @@ main {
     gap: 2rem;
 }
 
-button {
+.filterbutton, .reset {
+    padding: 10px;
+    font-size: 1.2rem;
+    outline: none;
+    border: none;
+    border-radius: 5px;
+    text-transform: uppercase;
+}
+
+input{
     padding: 10px;
     font-size: 1.2rem;
     outline: none;
