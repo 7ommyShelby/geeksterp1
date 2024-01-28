@@ -6,12 +6,13 @@ async function findtypes() {
     let fetchedtypes = await fetch('https://pokeapi.co/api/v2/type/')
 
     let types = await fetchedtypes.json();
-    console.log(types);
+    // console.log(types);
 
     types.results.forEach(element => {
         let options = document.createElement('option');
         // options.value = element.name
-        options.setAttribute('value', element.url)
+         options.setAttribute('value', element.url)
+        
         options.innerText = element.name
         // console.log(element.name);
         selecttypes.appendChild(options);
@@ -32,7 +33,7 @@ async function pokeball() {
 
     let pokemon = await data.json()
 
-    // console.log(pokemon.pokemon)
+    //  console.log(pokemon.pokemon)
 
     pokemon.pokemon.forEach((e) => {
 
@@ -45,7 +46,8 @@ async function pokeball() {
     arr.forEach(async (elem) => {
         let listoftypes = await fetch(elem.url)
         let finaltype = await listoftypes.json();
-        //    console.log(finaltype);   object here
+        
+            console.log(finaltype);
 
 
         let flipcard = document.createElement('div')
@@ -134,15 +136,11 @@ async function pokeball() {
         flipcard.append(flipcardinner);
         display.append(flipcard);
 
-
-
-
     })
 
-    // console.log(arr,"click");
 }
 
-
+//https://pokeapi.co/api/v2/pokemon/?offset=0&limit=50
 // async function pokedextab() {
 //     let pd = await fetch('https://pokeapi.co/api/v2/type/');
 //     let pdjson = await pd.json();
@@ -168,11 +166,11 @@ async function pokedextab() {
     let pdjson = await pd.json();
 
     let xmen = pdjson.results.map(async (e) => {
-        
-            let a = await fetch(e.url);
-            let b = await a.json();
-            return b;
-        
+
+        let a = await fetch(e.url);
+        let b = await a.json();
+        return b;
+
     })
     Promise.all(xmen).then(
         (res) => {
@@ -198,7 +196,13 @@ async function pokedextab() {
                     txt.classList.add('name')
                     let txttype = document.createElement('span')
                     txttype.classList.add('type')
-                    txttype.innerText = y.types[0].type.name;
+
+                    let type = y.types.map((elem) => {
+                        let { name } = elem.type
+                        return name;
+                    })
+                    // console.log((type));
+                    txttype.innerText = type;
 
                     if (txttype.innerText == "normal") {
                         flipcardinner.style.backgroundColor = "grey";
