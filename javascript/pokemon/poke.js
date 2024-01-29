@@ -5,22 +5,22 @@ let find = document.querySelector('.find')
 
 let colors = {
     fire: "orange",
-    water:  "#19faf4",
-    ice:    'blue',
-    rock:   'brown',
+    water: "#19faf4",
+    ice: 'blue',
+    rock: 'brown',
     ghost: 'grey',
-    dark:   '#7800a3',
-    bug:    'lightgreen',
+    dark: '#7800a3',
+    bug: 'lightgreen',
     electric: 'yellow',
-    fighting:   '#f05f5f',
+    fighting: '#f05f5f',
     flying: '#22c1c3',
     poison: '#c322b7',
     ground: '#5f8f83',
-    steel:   '#a8beb8',
-    grass:  '#22b600',
+    steel: '#a8beb8',
+    grass: '#22b600',
     psychic: '#ebaeee',
     dragon: '#ff903a',
-    fairy:  '#94bbe9',
+    fairy: '#94bbe9',
     normal: '#ebaeee'
 }
 
@@ -51,7 +51,7 @@ let display = document.querySelector('.display');
 
 
 async function pokeball() {
-    
+
     let arr = [];
 
     let data = await fetch('https://pokeapi.co/api/v2/pokemon/?offset=0&limit=1302');
@@ -70,6 +70,7 @@ async function pokeball() {
 
     Promise.all(arr).then((res) => {
         pokemostodisplay(res)
+        filterdata(res)
     })
 }
 
@@ -78,26 +79,26 @@ async function showtypes() {
     let x = await fetch(selecttypes.value);
     let y = await x.json()
 
-  let pokedata =   y.pokemon.map(async (elem)=>{
+    let pokedata = y.pokemon.map(async (elem) => {
 
         let x = await fetch(elem.pokemon.url);
         let y = await x.json()
         // console.log(y);
         return y
-        
+
     })
 
-    Promise.all(pokedata).then((res)=>{
+    Promise.all(pokedata).then((res) => {
         pokemostodisplay(res)
-        // console.log(res);
-    })  
+
+    })
 
 }
 
 
 //for display
 function pokemostodisplay(array) {
-display.innerHTML = "";
+    display.innerHTML = "";
     array.forEach((e) => {
 
         let flipcard = document.createElement('div')
@@ -136,13 +137,11 @@ display.innerHTML = "";
         backname.innerText = e.name
         abilities.innerText = str.slice(0, str.length - 2);
 
-        if(e.types.length>1){
+        if (e.types.length > 1) {
             flipcardinner.style.background = `linear-gradient(125deg, ${colors[type[0]]}  50%, ${colors[type[1]]} 50%)`
-        }else if(e.types.length==1){
+        } else if (e.types.length == 1) {
             flipcardinner.style.backgroundColor = colors[type]
         }
-
-
 
 
         flipcardback.append(backname, abilities)
@@ -160,11 +159,23 @@ findtypes()
 
 window.onload = pokeball()
 
-document.querySelector('.reset').addEventListener('click', pokeball )
+document.querySelector('.reset').addEventListener('click', pokeball)
 
 filtertype.addEventListener('click', showtypes)
 
-// find.addEventListener('click', (e)=>{
-//     if(document.querySelector('input').value
-//     )
-// })
+
+function filterdata(result) {
+
+    find.addEventListener('click', (e) => {
+
+        let filterpokemon = result.filter((elem) => {
+            if (document.querySelector('input').value.toLowerCase().includes(elem.name.toLowerCase())) {
+                return true;
+            }
+        })
+
+        // console.log(filterpokemon);
+        pokemostodisplay(filterpokemon)
+    })
+
+}   
