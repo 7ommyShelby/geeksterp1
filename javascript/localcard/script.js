@@ -25,7 +25,7 @@ if (localStorage.getItem("info")) {
 else {
 
     let firstname = prompt("Enter First Name")
-    let lastname = prompt("Enter First Name")
+    let lastname = prompt("Enter Last Name")
     let country = prompt("Enter country")
     let phone = prompt("Enter Phone Number")
     let state = prompt("Enter state")
@@ -78,5 +78,5 @@ document.querySelector('.add').addEventListener('click', () => {
 
     display(data);
     localStorage.setItem("info", x)
-    
+
 })
