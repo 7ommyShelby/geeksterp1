@@ -57,7 +57,7 @@ document.querySelector('.reset').addEventListener('click', () => {
 document.querySelector('.add').addEventListener('click', () => {
 
     let firstname = prompt("Enter First Name")
-    let lastname = prompt("Enter Lirst Name")
+    let lastname = prompt("Enter Last Name")
     let country = prompt("Enter Country")
     let phone = prompt("Enter Phone Number")
     let state = prompt("Enter State")
