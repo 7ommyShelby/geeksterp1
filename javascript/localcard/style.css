@@ -2,6 +2,7 @@
     margin: 0;
     padding: 0;
     box-sizing: border-box;
+    font-family: 'Kanit', sans-serif;
 
 }
 main{
@@ -12,6 +13,7 @@ main{
     height: 100vh;
     flex-direction: column;
     gap: 1rem;
+    background-color: #c0b3f9;
 }
 
   .card1 {
@@ -27,6 +29,7 @@ main{
     align-items: center;
     justify-content: center;
     padding: 2rem;
+    background-color: #00aeff;
   }
 
   .card1 div{
@@ -37,6 +40,7 @@ main{
 
   .card1 span{
     font-size: 1.2rem;
+    text-transform: capitalize;
   }
   .card1 p{
     font-size: 1rem;
@@ -62,5 +66,5 @@ button{
 .game{
   display: flex;
   justify-content: space-between;
-  width: 50%;
+  width: 40%;
 }
