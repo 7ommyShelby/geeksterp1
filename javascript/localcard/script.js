@@ -26,11 +26,11 @@ else {
 
     let firstname = prompt("Enter First Name")
     let lastname = prompt("Enter Last Name")
-    let country = prompt("Enter country")
+    let country = prompt("Enter Country")
     let phone = prompt("Enter Phone Number")
-    let state = prompt("Enter state")
-    let city = prompt("Enter city")
-    let village = prompt("Enter village")
+    let state = prompt("Enter State")
+    let city = prompt("Enter City")
+    let village = prompt("Enter Village")
 
     let data = {
         name: firstname + " " + lastname,
@@ -57,12 +57,12 @@ document.querySelector('.reset').addEventListener('click', () => {
 document.querySelector('.add').addEventListener('click', () => {
 
     let firstname = prompt("Enter First Name")
-    let lastname = prompt("Enter First Name")
-    let country = prompt("Enter country")
+    let lastname = prompt("Enter Lirst Name")
+    let country = prompt("Enter Country")
     let phone = prompt("Enter Phone Number")
-    let state = prompt("Enter state")
-    let city = prompt("Enter city")
-    let village = prompt("Enter village")
+    let state = prompt("Enter State")
+    let city = prompt("Enter City")
+    let village = prompt("Enter Village")
 
     let data = {
         name: firstname + " " + lastname,
