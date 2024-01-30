@@ -173,8 +173,7 @@ function filterdata(result) {
                 return true;
             }
         })
-
-        // console.log(filterpokemon);
+        
         pokemostodisplay(filterpokemon)
     })
 
