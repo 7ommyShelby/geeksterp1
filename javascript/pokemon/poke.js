@@ -173,7 +173,7 @@ function filterdata(result) {
                 return true;
             }
         })
-        
+
         pokemostodisplay(filterpokemon)
     })
 

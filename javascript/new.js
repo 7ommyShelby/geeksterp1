@@ -97,3 +97,9 @@
 
 // caps(str);
 
+
+
+// function abs(name1="arya", name2){
+//     console.log(name1+name2);
+// }
+// abs(undefined , "kumar")
