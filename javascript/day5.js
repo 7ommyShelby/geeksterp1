@@ -61,4 +61,38 @@
 // console.log(ans);
 
 
+// function grand(){
+//     console.log("grand");
+//     function parent(){
+//         console.log("parent");
+//         function child(){
+//             console.log("child");
+//         }
+//         return child
+//     }
+//     return parent;
+// }
 
+// console.log("1",grand());
+// console.log(parent());
+
+
+let data = [];
+
+class Student{
+    constructor(studentname, studentage ){
+        this.age = studentage;
+        this.name = studentname;
+        // this.batch = "FS-15"
+    }
+}
+
+class Student2 extends Student{
+    constructor(name, age){  //previous
+        super(name, age);   // current
+        this.batch = "fs15"
+    }
+}
+
+data.push(new Student2('arya', 25))
+console.log(new Student2('arya', 25));

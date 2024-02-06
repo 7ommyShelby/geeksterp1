@@ -3,15 +3,15 @@ let display = document.querySelector('.display');
 
 
 async function weather() {
-    let x = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${input.value}&apikey=3NkvA9A6qRo3PHIpnfjOR9ZWTDOAxgjF`, {
-        header: {
-            'accept': 'application/json'
-        }
-    })
+    // let x = await fetch(`https://api.tomorrow.io/v4/weather/realtime?location=${input.value}&apikey=3NkvA9A6qRo3PHIpnfjOR9ZWTDOAxgjF`, {
+    //     header: {
+    //         'accept': 'application/json'
+    //     }
+    // })
 
 
-    let y = await x.json();
-    console.log(y);
+    // let y = await x.json();
+    console.log(input.value);
 
     display.innerHTML = `
                 <p>Temp <span>${y.data.values.temperature}</span></p>
@@ -19,20 +19,38 @@ async function weather() {
                 <p>visiblity <span>${y.data.values.visibility}</span></p>
                 <p>humidity <span>${y.data.values.humidity}</span></p>
     `
+
+
 }
 
-function debounce(func, timeout = 1500) {
-    let timer;
+
+function throttle(mainFunction, delay) {
+    let timerFlag = null; 
+
     return (...args) => {
-        clearTimeout(timer);
-        timer = setTimeout(() => { func.apply(this, args); }, timeout);
-        console.log(timer);
+      if (timerFlag === null) { 
+        mainFunction(...args); 
+        timerFlag = setTimeout(() => { 
+          timerFlag = null; 
+        }, delay);
+      }
+    };
+  }
+  
+
+function debounce(func, timeout = 1500) {
+    let timer = 0;
+    return (...args) => {
+        const now = new Date().getTime();
+        if ((now - timer) < timeout)
+            return;
+        timer = now;
+        func(...args)
     };
 }
 
-const processChange = debounce(() => weather());
+const processChange = debounce(weather);
 
 window.addEventListener('keyup', processChange)
 
 
- 
