@@ -7,27 +7,68 @@
     <title>Weather App</title>
 
     <link rel="stylesheet" href="./style.css">
+    <link rel="stylesheet"
+        href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:opsz,wght,FILL,GRAD@24,400,0,0" />
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Protest+Revolution&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link
+        href="https://fonts.googleapis.com/css2?family=Protest+Revolution&family=Raleway:wght@300;400;500;600;700;800&display=swap"
+        rel="stylesheet">
 </head>
 
 <body>
     <!-- 4MKMfzIIx+9KlgmjzgKioQ==ioLnKQ9BluRp6LYV -->
     <main>
-        <h1>Weather App</h1>
-        <div class="banner">
-            <label for="city">City</label>
-            <input type="text" name="" id="city">
 
-        </div>
-        <div class="display">
-            <p>Temperature</p>
-            <p>pressure surface</p>
-            <p>visiblity</span></p>
-            <p>humidity</p>
+        <div class="card">
+            <div class="tools">
+                <div class="circle">
+                    <span class="red box"></span>
+                </div>
+                <div class="circle">
+                    <span class="yellow box"></span>
+                </div>
+                <div class="circle">
+                    <span class="green box"></span>
+                </div>
+            </div>
+            <div class="card__content">
+                <h1>Weather App</h1>
+                <div class="banner">
+                    <!-- <label for="city">City</label> -->
+                    <input type="text" name="" id="city" placeholder="Search Your City">
+                    <button>Search</button>
+                </div>
+                <div class="display">
+                    <div class="left">
+                        <p class="city">some city</p>
+                        <p class="day">some day</p>
+                        <p class="humid"><span class="material-symbols-outlined">
+                                humidity_low
+                            </span>:</p>
+                        <p class="wind">
+                            <span class="material-symbols-outlined">
+                                air
+                            </span>
+                            :
+                        </p>
+                    </div>
+                    <div class="mid">
+                        <img class="weather" src="./sun.png" alt="">
+                        <p>weather</p>
+                    </div>
+                    <div class="right">
+                        <p class="temp">Temp°C</p>
+                    </div>
+                </div>
+
+            </div>
         </div>
 
     </main>
-
-
 
 
     <script src="./script.js"></script>
