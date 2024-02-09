@@ -3,11 +3,11 @@ let query = document.querySelector('input');
 let display = document.querySelector('.show');
 let more = document.querySelector('.data');
 
-let info = query.value
+
 let x = 1;
 
 async function photo() {
-    let data = await fetch(`https://api.unsplash.com/search/photos?page=${x}&query=${info}&client_id=BcEUItfGZTTH9aVHXJMn9pR1OtM1Scbf1McGJRq8Is8`)
+    let data = await fetch(`https://api.unsplash.com/search/photos?page=${x}&query=${query.value}&client_id=BcEUItfGZTTH9aVHXJMn9pR1OtM1Scbf1McGJRq8Is8`)
 
     let ans = await data.json();
     console.log(ans.results);
